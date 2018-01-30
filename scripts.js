@@ -26,7 +26,7 @@ $(function() {
 				self.removeColumn();
 			});
 			$columnAddCard.click(function(event) {
-				self.addCard(new Card(prompt("Nazwij swoj¹ now¹ kartê")));
+				self.addCard(new Card(prompt("Nazwij swoj? now? kart?")));
 			});
 		
 			$column.append($columnTitle)
@@ -49,9 +49,9 @@ $(function() {
 		}
 	};
 
-	function card(description) {
+	function Card(description) {
 		var self = this;
-		this.id -= randomString();
+		this.id = randomString();
 		this.description = description;
 		this.$element = createCard();
 
@@ -62,13 +62,15 @@ $(function() {
 		
 			$cardDelete.click(function() {
 				self.removeCard();		
+			});
 			
 			$card.append($cardDelete)
 				.append($cardDescription);
 
 				return $card;
+			
 		}
-	);}
+	}
 
 	Card.prototype = {
 		removecard: function() {
@@ -114,6 +116,5 @@ $(function() {
 	todoColumn.addCard(card1);
 	doingColumn.addCard(card2);
 
-}
-})
 
+})

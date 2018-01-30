@@ -1,3 +1,18 @@
 .card-placeholder {
 	background: red;
 }
+body {
+	background: lightgrey;
+}
+h1 {
+	text-align: center
+}
+ul {
+	background:aliceblue;
+	max-width:300px;
+	display: block;
+}
+.column {
+	background: lightyellow;
+	max-width: 300px;
+}
