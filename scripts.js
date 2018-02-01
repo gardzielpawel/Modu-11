@@ -1,12 +1,11 @@
 $(function() {
-
 	function randomString() {
-    		var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
-    		var str = '';
-    		for (var i = 0; i < 10; i++) {
-        		str += chars[Math.floor(Math.random() * chars.length)];
-    		}
-    		return str;
+		var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
+		var str = '';
+		for (var i = 0; i < 10; i++) {
+			str += chars[Math.floor(Math.random() * chars.length)];
+		}
+		return str;
 	}
 
 	function Column(name) {
@@ -17,7 +16,7 @@ $(function() {
 
 		function createColumn() {
 			var $column = $('<div>').addClass('column');
-			var $columnTitle = $('<ul>').addClass('column-title').text(self.name);
+			var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
 			var $columnCardList = $('<ul>').addClass('column-card-list');
 			var $columnDelete = $('<button>').addClass('btn-delete').text('x');
 			var $columnAddCard = $('<button>').addClass('add-cart').text('Add a card');
@@ -34,9 +33,7 @@ $(function() {
 				.append($columnAddCard)
 				.append($columnCardList);
 
-			return $column;
-						
-
+			return $column;					
 		}
 	}
 	
@@ -57,8 +54,8 @@ $(function() {
 
 		function createCard() {
 			var $card = $('<li>').addClass('card');
-    			var $cardDescription = $('<p>').addClass('card-description').text(self.description);
-    			var $cardDelete = $('<button>').addClass('btn-delete').text('x');
+			var $cardDescription = $('<p>').addClass('card-description').text(self.description);
+			var $cardDelete = $('<button>').addClass('btn-delete').text('x');
 		
 			$cardDelete.click(function() {
 				self.removeCard();		
@@ -67,13 +64,12 @@ $(function() {
 			$card.append($cardDelete)
 				.append($cardDescription);
 
-				return $card;
-			
+			return $card;			
 		}
 	}
 
 	Card.prototype = {
-		removecard: function() {
+		removeCard: function() {
 			this.$element.remove();
 		}	
 	};
@@ -89,18 +85,16 @@ $(function() {
 	
 	function initSortable() {
 		$('.column-card-list').sortable( {
-		connectWith: '.column-card-list',
-		placeholder: 'card-placeholder'
+			connectWith: '.column-card-list',
+			placeholder: 'card-placeholder'
 		}).disableSelection();
 	}
 
-
-	$('.create-column')
-  		.click(function(){
+	$('.create-column').click(function(){
 		var name = prompt('Enter a column name');
 		var column = new Column(name);
-    			board.addColumn(column);
- 	 });
+		board.addColumn(column);
+ 	});
 
 	var todoColumn = new Column('To do');
 	var doingColumn = new Column('Doing');
@@ -115,6 +109,4 @@ $(function() {
 
 	todoColumn.addCard(card1);
 	doingColumn.addCard(card2);
-
-
-})
+});
